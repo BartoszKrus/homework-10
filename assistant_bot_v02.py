@@ -110,18 +110,17 @@ def main():
             if not name.strip():
                 print("Error: Name cannot be empty.\n")
                 continue
-            
+                        
             existing_records = address_book.find_records(name)
             if existing_records:
                 print(f"Error: This name: {name} already exists in the address book. Please choose a different name.\n")
                 continue
+
             else:
-                record = Record(name)
-                
+                record = Record(name)                
                 phone = input("Enter phone number: ")
                 if phone.strip():
-                    record.add_phone(Phone(phone))
-                
+                    record.add_phone(Phone(phone))                
                 address_book.add_record(record)
                 print(f"Success: Record: {name}: {phone} added successfully.\n")
 
@@ -163,7 +162,7 @@ def main():
                     else:
                         print(f"Error: Old phone number: {old_phone} not found for {name}.\n")
                 else:
-                    print(f"Error: New phone number not provided.\n")
+                    print(f"Error: New phone number not provided.\n")                    
             else:
                 print(f"Error: Name: {name} not found in the address book.\n")
 
@@ -190,7 +189,6 @@ def main():
         elif command == "find":
             name = input("Enter name to search: ").strip()
             phone = input("Enter phone number to search: ").strip()
-
             if not name.strip() and not phone.strip():
                 print("Error: Name and phone number cannot be empty.\n")
                 continue
@@ -208,7 +206,6 @@ def main():
                 for record in address_book.values():
                     if phone in [str(p) for p in record.phones]:
                         results.append(record)
-
             if results:
                 print("Success: Matching records:")
                 for record in results:
